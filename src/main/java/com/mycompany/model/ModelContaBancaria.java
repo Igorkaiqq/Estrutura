@@ -1,5 +1,6 @@
 package com.mycompany.model;
 
+
 public class ModelContaBancaria
 {
 
@@ -54,10 +55,6 @@ public class ModelContaBancaria
     public void deposito(double deposito){
         this.contaSaldo += deposito;
         this.deposito += deposito;
-    }
-
-    public void transferencia(double valor, int conta1, int conta2){
-
     }
 
 }

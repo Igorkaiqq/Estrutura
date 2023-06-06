@@ -82,8 +82,38 @@ public class ModelBanco {
         return - 1;
     }
 
-    private double calcularSaldoTotal(){
-        return a;
+
+    private double calcularSaldoTotalRecursivo(int i) {
+        if (i == numeroDeContas) {
+            return 0;
+        } else {
+            double saldo = contas[i].getContaSaldo();
+            double saldoRestante = calcularSaldoTotalRecursivo(i + 1);
+            return saldo + saldoRestante;
+        }
+    }
+
+    public double calcularSaldoTotal() {
+        return calcularSaldoTotalRecursivo(0);
+    }
+
+    
+
+    private void verificarSaldosNegativosRecursivo(int i) {
+        if (i == numeroDeContas) {
+            return;
+        }
+
+        double saldo = contas[i].getContaSaldo();
+        if (saldo < 0) {
+            System.out.println("Conta " + contas[i].getContaNumero() + " possui saldo negativo: R$" + contas[i].getContaSaldo());
+        }
+
+        verificarSaldosNegativosRecursivo(i + 1);
+    }
+
+    public void verificarSaldosNegativos() {
+        verificarSaldosNegativosRecursivo(0);
     }
 
 }
