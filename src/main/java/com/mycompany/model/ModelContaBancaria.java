@@ -6,7 +6,7 @@ public class ModelContaBancaria
 
     private int contaNumero;
     private String contaTitular;
-    private double contaSaldo, deposito, saque;
+    private double contaSaldo, deposito, saque, movimentacao, totalSaque, totalDeposito;
 
     public ModelContaBancaria() {
     }
@@ -17,6 +17,8 @@ public class ModelContaBancaria
         this.contaSaldo = contaSaldo;
         this.deposito = 0;
         this.saque = 0;
+        this.totalDeposito = 0;
+        this.totalSaque= 0;
     }
 
     public int getContaNumero() {
@@ -47,14 +49,22 @@ public class ModelContaBancaria
         return saque;
     }
 
+    public double getTotalSaque(){
+        return totalSaque;
+    }
+
+    public double getTotalDeposito(){
+        return totalDeposito;
+    }
+
     public void sacar (double saque){
         this.contaSaldo -= saque;
-        this.saque += saque;
+        totalSaque += saque;
     }
 
     public void deposito(double deposito){
         this.contaSaldo += deposito;
-        this.deposito += deposito;
+        totalDeposito += deposito;
     }
 
 }
